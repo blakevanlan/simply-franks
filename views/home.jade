@@ -1,7 +1,14 @@
 extends layout
 
+block prepend scripts
+   script(type="text/javascript")
+      window.sf = { lat: #{lat}, lng: #{lng} };
+
 block append scripts
    != js("pages/home")
 
 block body
    #map
+
+block footer
+   span.distance(data-bind="html: user_distance_text")

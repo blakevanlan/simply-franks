@@ -1,0 +1,28 @@
+@import "../lib/variables"
+@import "../lib/mixins"
+
+body.admin
+
+   #track-wrap
+      margin: 80px 0 0 0 
+      text-align: center
+
+   #active-wrap
+      margin: 35px
+      text-align: center
+
+   #track-button, #active-button
+      display: inline-block
+      padding: 20px 0
+      border-radius: 4px
+      font-size: 1.4em
+      color: #fff
+      cursor: pointer
+      width: 175px
+      dropshadow: inset 1px 1px 4px rgba(255, 255, 255, 0.6), inset -1px -1px 4px rgba(0, 0, 0, 0.6)
+
+      &.active
+         background-red-gloss: true
+
+      &.inactive
+         background-green-gloss: true

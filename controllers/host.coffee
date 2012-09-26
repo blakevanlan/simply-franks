@@ -1,8 +1,10 @@
 express = require "express"
 config = require "../config/app"
 path = require "path"
+http = require "http"
 
-app = module.exports = express()
+
+app = express()
 
 # Settings
 app.set "view engine", "jade"
@@ -23,6 +25,10 @@ app.use require("connect-assets")()
 app.use express.static path.join __dirname, "../public"
 app.use require "../middleware/utils"
 
+# Socket.io
+module.exports = server = http.createServer(app)
+io = require("socket.io").listen(server)
+
 # Controllers
 app.use require "./home"
-app.use require "./admin"
+app.use require("./admin")(io)

@@ -1,0 +1,17 @@
+extends layout
+
+block prepend scripts
+   script(type="text/javascript")
+      window.sf = { active: #{active} };
+
+block append scripts
+   != js("pages/admin")
+
+block body
+   #track-wrap
+      a#track-button(data-bind="attr: { 'class': track_class }, click: switchTracking")
+         span(data-bind="text: track_text")
+
+   #active-wrap
+      a#active-button(data-bind="attr: { 'class': active_class }, click: switchActive")
+         span(data-bind="text: active_text")

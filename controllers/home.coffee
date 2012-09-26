@@ -6,5 +6,6 @@ app = module.exports = express()
 
 app.get "/", (req, res, next) ->
    res.render "home", 
-      lat: 39.1897705
+      # lat: 39.18978
+      lat: 39.18
       lng: -96.57086679999999
