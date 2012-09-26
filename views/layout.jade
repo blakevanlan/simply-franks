@@ -1,0 +1,23 @@
+doctype 5
+html
+   head
+      title Simply Franks
+   
+      block styles
+         != css("lib/normalize")
+         != css("skin")
+
+      block scripts
+         != js("lib/jquery-1.8.1")
+         != js("lib/knockout")
+         script(src="http://maps.googleapis.com/maps/api/js?sensor=false", type="text/javascript")
+
+         script(type="text/javascript")
+            window.sf = { lat: #{lat}, lng: #{lng} };
+
+   - var viewDir = locals.root
+   - var view = locals.filename.replace(viewDir, "").replace(".jade", "").replace(/^[\\\/]/g, "");
+   - var viewClass = view.replace(/[\\\/]/g, "-");
+   body(class=viewClass)
+      
+      block body
