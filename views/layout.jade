@@ -6,6 +6,7 @@ html
       block styles
          != css("lib/normalize")
          != css("skin")
+         != css("pages/home")
 
       block scripts
          != js("lib/jquery-1.8.1")
@@ -20,4 +21,12 @@ html
    - var viewClass = view.replace(/[\\\/]/g, "-");
    body(class=viewClass)
       
+      #header
+         ul.nav
+            a.nav-item
+               | About
+
       block body
+
+      #footer
+         block footer

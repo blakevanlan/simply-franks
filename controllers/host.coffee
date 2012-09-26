@@ -21,6 +21,7 @@ app.use express.query()
 app.use express.bodyParser()
 app.use require("connect-assets")()
 app.use express.static path.join __dirname, "../public"
+app.use require "../middleware/utils"
 
 # Controllers
 app.use require "./home"

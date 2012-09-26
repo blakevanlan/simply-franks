@@ -8,8 +8,34 @@
 // *********************************************
 // STRUCTURE
 // *********************************************
-#map
-   height: 300px
+html
+   height: 100%
+body
+   position: relative
+   margin 0 auto
+   height: 100%
+
+@media screen and (min-width: 644px)
+   body
+      width: 640px
+      dropshadow: 3px 0 25px #333, -3px 0 25px #333
+
+#header
+   position: relative
+   height: header-height
+   dropshadow: 0 1px 5px rgba(0,0,0,.4)
+   z-index: 100
+   background-gray-gloss: true
+
+#footer
+   position: absolute
+   height: footer-height
+   right: 0
+   bottom: 0
+   left: 0
+   dropshadow: 0 -1px 4px rgba(0,0,0,.4)
+   z-index: 100
+   background-gray-gloss: true
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2)
    body
