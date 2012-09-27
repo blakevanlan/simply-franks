@@ -1,6 +1,9 @@
 /*
 Environmental variables
  - PORT
+ - COOKIE_SECRET
+ - MONGOHQ_URL
+ - REDISTOGO_URL
 */
 
 require("coffee-script");

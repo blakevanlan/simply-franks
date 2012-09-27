@@ -2,7 +2,10 @@ extends layout
 
 block prepend scripts
    script(type="text/javascript")
-      window.sf = { active: #{active} };
+      window.sf = { 
+         active: #{active}, 
+         connect_sid: '#{connect_sid}'
+      };
 
 block append scripts
    != js("pages/admin")
