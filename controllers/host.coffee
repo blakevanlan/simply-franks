@@ -46,11 +46,11 @@ app.use passport.session()
 # Socket.io
 module.exports = server = http.createServer(app)
 io = require("socket.io").listen(server)
+io.set("log level", 0)
 
 # Mongoose
 mongoose.connect process.env.MONGOHQ_URL
-mongoose.connection.on "open", () ->
-   console.log "Mongoose connected."
+mongoose.connection.on "open", () -> console.log "Mongoose connected."
 
 # Controllers
 app.use require("./home")(null)

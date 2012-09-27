@@ -1,22 +1,26 @@
 {
-   "author": "Blake VanLandingham",
-   "name": "simply-franks",
-   "version": "0.0.1",
-   "engines": {
-      "node": ">= 0.8.8"
-   },
-   "dependencies": {
-      "coffee-script": "1.3.3",
-      "express": "3.0.0rc4",
-      "jade": "0.27.2",
-      "stylus": "0.29.0",
-      "request": "2.11.1",
-      "connect-assets": "2.3.3",
-      "socket.io": "0.9.10",
-      "mongoose": "3.1.2",
-      "passport": "0.1.12",
-      "passport-local": "0.1.6",
-      "connect-redis": "1.4.4",
-      "redis-url": "0.1.0"
-   }
+  "author": "Blake VanLandingham",
+  "name": "simply-franks",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">= 0.8.8"
+  },
+  "dependencies": {
+    "coffee-script": "1.3.3",
+    "express": "3.0.0rc4",
+    "jade": "0.27.2",
+    "stylus": "0.29.0",
+    "request": "2.11.1",
+    "connect-assets": "2.3.3",
+    "socket.io": "0.9.10",
+    "mongoose": "3.1.2",
+    "passport": "0.1.12",
+    "passport-local": "0.1.6",
+    "connect-redis": "1.4.4",
+    "redis-url": "0.1.0"
+  },
+  "subdomain": "simplyfranks",
+  "scripts": {
+    "start": "server.js"
+  }
 }
