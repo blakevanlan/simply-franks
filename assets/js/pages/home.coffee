@@ -32,7 +32,8 @@ $(document).ready () ->
             icon: "/images/pin-sf.png"
 
          @user_distance_text = ko.computed () =>
-            if @user_distance() == "Unknown"
+            unless @sf_active() then return ""
+            else if @user_distance() == "Unknown"
                return "No sure where your at!"
             return textForDistance @user_distance()
 

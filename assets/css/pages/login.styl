@@ -1,0 +1,42 @@
+@import "../lib/variables"
+@import "../lib/mixins"
+
+body.login
+
+   #username-wrap, #password-wrap
+      text-align: center
+
+   #username-wrap
+      margin-top: 90px
+
+   #password-wrap
+      margin: 5px 0 20px 0
+
+   input.text
+      font-size: 1.2em
+      background: #E5D7D9
+      border-radius: 10px
+      padding: 5px 8px
+
+      &:focus 
+         outline: none
+
+   #login-wrap
+      text-align: center
+
+      button
+         cursor: pointer
+         background:none!important
+         padding:0!important
+         background-color: transparent
+         border:none!important
+
+      span
+         display: inline-block
+         background-gray-gradient: true
+         padding: 16px 0
+         border-radius: 4px
+         font-size: 1.4em
+         color: #fff
+         width: 140px
+         dropshadow: inset 1px 1px 4px rgba(255, 255, 255, 0.6), inset -1px -1px 4px rgba(0, 0, 0, 0.6)
