@@ -20,12 +20,13 @@ module.exports = (io, session) ->
 
    io.sockets.on "connection", (socket) ->
       
-      socket.on "active_switch", (data) ->
+      socket.on "active_change", (data) ->
          session.get data.session_id, (error, session_data) ->
             return if error
             User.findOne _id: session_data.passport.user, (error, user) ->
                user.active = data.active
                user.save()
+               socket.broadcast.emit "active_update", data
 
       socket.on "location_change", (data) ->
          session.get data.session_id, (error, session_data) ->
@@ -34,7 +35,7 @@ module.exports = (io, session) ->
                user.lat = data.lat
                user.lng = data.lng
                user.save()
-               socket.emit "location_update", 
+               socket.broadcast.emit "location_update", 
                   lat: data.lat
                   lng: data.lng
 

@@ -13,5 +13,6 @@ module.exports = (io) ->
          res.render "home",
             lat: user.lat
             lng: user.lng
+            active: user.active
 
    return app

@@ -2,7 +2,7 @@ extends layout
 
 block body
    form(action="/login", method="post")
-      input(type="text", name="username").username
-      input(type="text", name="password").password
+      input(type="text", name="username", placeholder="Username").username
+      input(type="text", name="password", placeholder="Password").password
       input(type="submit").login-button
          span Login

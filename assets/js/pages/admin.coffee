@@ -22,7 +22,7 @@ $(document).ready () ->
       switchActive: () ->
          newValue = !@is_active()
          @is_active(newValue)
-         socket.emit "active_switch", 
+         socket.emit "active_change", 
             session_id: sf.connect_sid
             active: newValue
 

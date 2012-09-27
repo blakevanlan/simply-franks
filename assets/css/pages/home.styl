@@ -2,9 +2,32 @@
 @import "../lib/mixins"
 
 body.home
-   #map
+   #map, #inactive-cover
       position: absolute
       top: header-height
       right: 0
       bottom: footer-height
       left: 0
+
+   #inactive-cover
+      z-index: 50
+      background: rgba(255,255,255,.6)
+
+      #message-wrap
+         margin: 120px auto 0
+         width: 160px
+         padding: 16px 20px
+         text-align: center
+         background: #E5D7D9
+         border-radius: 10px
+         color: dark-gray
+         border: 2px solid dark-gray
+         dropshadow: 0px 2px 3px rgba(0,0,0,.4), inset 1px 1px 3px rgba(0,0,0,.3), inset -1px 1px 3px rgba(0,0,0,.3)
+
+      #sad-face
+         display: block
+         font-size: 6.8em
+         margin-bottom: 12px
+         
+      #message
+         font-size: .9em
