@@ -14,6 +14,10 @@ $(document).ready () ->
          @active_class = ko.computed () => if @is_active() then "active" else "inactive"
          @active_text = ko.computed () => if @is_active() then "Close Stand" else "Open Stand"
                   
+         if navigator?.geolocation
+            navigator.geolocation.watchPosition (pos) =>
+               @emitLatLng(pos.coords.latitude, pos.coords.longitude)
+         
       switchTracking: () ->
          newValue = !@is_tracking()
          @is_tracking(newValue)
@@ -25,12 +29,6 @@ $(document).ready () ->
          socket.emit "active_change", 
             session_id: sf.connect_sid
             active: newValue
-
-      triggerUpdate: () ->
-         if navigator?.geolocation and @is_tracking
-            navigator.geolocation.getCurrentPosition (pos) =>
-               @emitLatLng pos.coords.latitude, pos.coords.longitude
-               @timer_id = window.setTimeout @triggerUpdate, 1000 * 60 * 2
 
       emitLatLng: (lat, lng) ->
          socket.emit "location_change",
