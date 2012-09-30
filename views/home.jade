@@ -7,12 +7,22 @@ block prepend scripts
 block append scripts
    != js("pages/home")
 
+block header-nav  
+   ul.nav
+      li.nav-item
+         a#about-button(data-bind="click: showHideAbout, text: about_text") About
+
 block body
    #map
    #inactive-cover(data-bind="fadeIn: sf_inactive, duration: 500")
       #message-wrap
          span#sad-face :(
          span#message Not currently operating
+   #about-wrap 
+      #about(data-bind="slideDown: show_about, duration: 500")
+         .inner
+            | We are Lawrences best hotdog stand. Not only are we always around when you need
+            | us, we also do catering!
 
 block footer
    span.distance(data-bind="html: user_distance_text")

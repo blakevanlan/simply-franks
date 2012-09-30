@@ -23,10 +23,9 @@ html
    - var viewClass = view.replace(/[\\\/]/g, "-");
    body(class=viewClass)
       
+
       #header
-         //- ul.nav
-         //-    a.nav-item
-         //-       | About
+         block header-nav
 
       block body
 

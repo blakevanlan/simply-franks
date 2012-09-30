@@ -2,12 +2,46 @@
 @import "../lib/mixins"
 
 body.home
+
+    #about-button
+      display: inline-block
+      background-gray-gradient: true
+      margin: 6px 6px 0 0
+      padding: 6px 0
+      border-radius: 4px
+      color: #fff
+      width: 100px
+      dropshadow: inset 1px 1px 4px rgba(255, 255, 255, 0.6), inset -1px -1px 4px rgba(0, 0, 0, 0.6)
+      cursor: pointer
+
+      &:active
+         dropshadow: inset -1px -1px 4px rgba(255, 255, 255, 0.3), inset 1px 1px 4px rgba(0, 0, 0, 0.6)
+      
    #map, #inactive-cover
       position: absolute
       top: header-height
       right: 0
       bottom: footer-height
       left: 0
+
+   #about-wrap
+      position: absolute
+      top: header-height
+      width: 100%
+      z-index: 60
+
+      #about
+         display: none
+         position: relative
+         width: 100%
+
+         .inner
+            padding: 16px
+            background: #EBEBEB
+            color: dark-gray
+            border: 1px solid #C9C9C9
+            dropshadow: 0px 2px 5px rgba(0,0,0,.2), inset 1px 1px 3px rgba(0,0,0,.3), inset -1px 1px 3px rgba(0,0,0,.3)
+
 
    #inactive-cover
       z-index: 50

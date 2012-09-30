@@ -19,6 +19,9 @@ $(document).ready () ->
 
    class HomePageViewModel
       constructor: (data) ->
+         @show_about = ko.observable false
+         @about_text = ko.computed () => if @show_about() then "Close" else "About"
+
          @sf_active = ko.observable sf.active
          @sf_inactive = ko.computed () => return !@sf_active()
          @user_latlng = null
@@ -71,16 +74,34 @@ $(document).ready () ->
          else
             @user_distance("Unknown")
 
+      showHideAbout: () ->
+         @show_about(!@show_about())
+
    ko.bindingHandlers.fadeIn = 
       update: (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) ->
-         allBindings = allBindingsAccessor()
          valueUnwrapped = ko.utils.unwrapObservable(valueAccessor())
-         duration = allBindings.duration || 400
-         console.log "Value: ", valueUnwrapped
+         duration = allBindingsAccessor().duration || 400
          if valueUnwrapped == true
             $(element).fadeIn(duration)
          else
             $(element).fadeOut(duration)
+
+   ko.bindingHandlers.slideDown = 
+      init: (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) ->
+         valueUnwrapped = ko.utils.unwrapObservable(valueAccessor())
+         $el = $(element)
+         if valueUnwrapped == true
+            $el.show().css("top", 0)
+         else
+            $el.css("top", -1 * $el.height()).show()
+      update: (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) ->
+         valueUnwrapped = ko.utils.unwrapObservable(valueAccessor())
+         duration = allBindingsAccessor().duration || 400
+         $el = $(element)
+         if valueUnwrapped == true
+            $el.animate(top: 0, duration)
+         else
+            $el.animate(top: -1*$el.height(), duration)
 
    viewModel = new HomePageViewModel()
    ko.applyBindings viewModel
