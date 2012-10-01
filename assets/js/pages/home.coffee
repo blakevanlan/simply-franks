@@ -42,7 +42,7 @@ $(document).ready () ->
          @user_distance_text = ko.computed () =>
             unless @sf_active() then return ""
             else if @user_distance() == "Unknown"
-               return "No sure where your at!"
+               return "Not sure where you're at!"
             return textForDistance @user_distance()
 
          if navigator?.geolocation
