@@ -29,10 +29,15 @@ $(document).ready () ->
          @user_distance = ko.observable("Unknown")
          @sf_latlng = mapOptions.center = new google.maps.LatLng(sf.lat, sf.lng)
          @map = new google.maps.Map $("#map").get(0), mapOptions
+
+         # sf_shadow = new google.maps.MarkerImage
+
+
          @sf_pin = new google.maps.Marker
             position: @sf_latlng
             map: @map
             icon: "/images/pin-sf.png"
+            shadow: "/images/pin-shadow-sf.png"
 
          @user_distance_text = ko.computed () =>
             unless @sf_active() then return ""
