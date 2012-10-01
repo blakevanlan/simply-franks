@@ -59,7 +59,7 @@ $(document).ready () ->
             @sf_pin.setVisible active
 
       setSfLatLng: (lat, lng) ->
-         @sf_latlng = new google.maps.LatLng(data.lat, data.lng)
+         @sf_latlng = new google.maps.LatLng(lat, lng)
          @calculateDistance()
          @sf_pin.setPosition @sf_latlng
 
