@@ -31,7 +31,7 @@ app.use require("../middleware/utils").root
 
 #Session
 redis_client = redis.connect(process.env.REDISTOGO_URL)
-redis_client.on "connect", () -> console.log "Redis connected."
+redis_client.on "ready", () -> console.log "Redis connected."
 sessionStore =  new RedisStore
    client: redis_client
 app.use express.session
