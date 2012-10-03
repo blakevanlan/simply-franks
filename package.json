@@ -1,9 +1,9 @@
 {
   "author": "Blake VanLandingham",
   "name": "simply-franks",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engines": {
-    "node": ">= 0.8.8"
+    "node": ">= 0.6.x"
   },
   "dependencies": {
     "coffee-script": "1.3.3",
