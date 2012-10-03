@@ -1,5 +1,4 @@
 express = require "express"
-config = require "../config/app"
 path = require "path"
 http = require "http"
 passport = require "passport"
@@ -31,9 +30,10 @@ app.use express.static path.join __dirname, "../public"
 app.use require("../middleware/utils").root
 
 #Session
-
+redis_client = redis.connect(process.env.REDISTOGO_URL)
+redis_client.on "connect", () -> console.log "Redis connected."
 sessionStore =  new RedisStore
-   client: redis.connect process.env.REDISTOGO_URL
+   client: redis_client
 app.use express.session
    cookie:
       maxAge: 60000 * 2880
@@ -53,8 +53,9 @@ mongoose.connect process.env.MONGOHQ_URL
 mongoose.connection.on "open", () -> console.log "Mongoose connected."
 
 # Controllers
-app.use require("./home")(null)
+app.use require "./home"
 app.use require("./admin")(io, sessionStore)
+app.use require "./error"
 
 # Passport
 passport.serializeUser (user, done) ->

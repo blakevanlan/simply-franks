@@ -1,6 +1,5 @@
 express = require "express"
 rest = require "request"
-config = require "../config/app"
 passport = require "passport"
 LocalStrategy = require("passport-local").Strategy
 mongoose = require "mongoose"
@@ -22,7 +21,7 @@ module.exports = (io, session) ->
       
       socket.on "active_change", (data) ->
          session.get data.session_id, (error, session_data) ->
-            return if error
+            return if error then console.error error.stack
             User.findOne _id: session_data.passport.user, (error, user) ->
                user.active = data.active
                user.save()
@@ -30,7 +29,7 @@ module.exports = (io, session) ->
 
       socket.on "location_change", (data) ->
          session.get data.session_id, (error, session_data) ->
-            return if error
+            return if error then console.error error.stack
             User.findOne _id: session_data.passport.user, (error, user) ->
                user.lat = data.lat
                user.lng = data.lng
