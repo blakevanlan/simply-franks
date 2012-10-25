@@ -34,8 +34,11 @@ $(document).ready () ->
          @sf_pin = new google.maps.Marker
             position: @sf_latlng
             map: @map
-            icon: new google.maps.MarkerImage("/images/pin-sf@2x.png", null, null, null, new google.maps.Size(34, 54))
+            icon: new google.maps.MarkerImage(
+               if window.devicePixelRatio > 1.5 then "/images/pin-sf@2x.png" else "/images/pin-sf.png",
+               null, null, null, new google.maps.Size(34, 54))
             shadow: "/images/pin-shadow-sf.png"
+            optimized: false
 
          @user_distance_text = ko.computed () =>
             unless @sf_active() then return ""
@@ -76,6 +79,11 @@ $(document).ready () ->
             @user_pin = new google.maps.Marker
                position: @user_latlng
                map: @map
+               icon: new google.maps.MarkerImage(
+                  if window.devicePixelRatio > 1.5 then "/images/pin-user@2x.png" else "/images/pin-user.png",
+                  null, null, null, new google.maps.Size(20, 34))
+               shadow: "/images/pin-shadow-user.png"
+               optimized: false
 
       calculateDistance: () ->
          if @user_latlng and @sf_latlng
