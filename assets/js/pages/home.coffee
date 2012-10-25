@@ -19,6 +19,7 @@ $(document).ready () ->
 
    class HomePageViewModel
       constructor: (data) ->
+         @watching_location = false
          @show_about = ko.observable false
          @about_text = ko.computed () => if @show_about() then "Close" else "About"
 
@@ -29,9 +30,6 @@ $(document).ready () ->
          @user_distance = ko.observable("Unknown")
          @sf_latlng = mapOptions.center = new google.maps.LatLng(sf.lat, sf.lng)
          @map = new google.maps.Map $("#map").get(0), mapOptions
-
-         # sf_shadow = new google.maps.MarkerImage
-
 
          @sf_pin = new google.maps.Marker
             position: @sf_latlng
@@ -45,18 +43,24 @@ $(document).ready () ->
                return "Not sure where you're at!"
             return textForDistance @user_distance()
 
-         if navigator?.geolocation
-            navigator.geolocation.watchPosition (pos) =>
-               @setUserLatLng(pos.coords.latitude, pos.coords.longitude)
+         @setLocationWatch();
+         @sf_pin.setVisible @sf_active()
 
          socket.on "location_update", (data) =>
             if data then @setSfLatLng(data.lat, data.lng)
 
          socket.on "active_update", (data) =>
             if data then @sf_active(data.active)
+            @setLocationWatch()
 
          @sf_active.subscribe (active) =>
             @sf_pin.setVisible active
+
+      setLocationWatch: () ->
+         if navigator?.geolocation and @sf_active() and not @watching_location
+            navigator.geolocation.watchPosition (pos) =>
+               @setUserLatLng(pos.coords.latitude, pos.coords.longitude)
+               @watching_location = true;
 
       setSfLatLng: (lat, lng) ->
          @sf_latlng = new google.maps.LatLng(lat, lng)
