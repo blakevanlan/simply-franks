@@ -34,7 +34,7 @@ $(document).ready () ->
          @sf_pin = new google.maps.Marker
             position: @sf_latlng
             map: @map
-            icon: "/images/pin-sf.png"
+            icon: new google.maps.MarkerImage("/images/pin-sf@2x.png", null, null, null, new google.maps.Size(34, 54))
             shadow: "/images/pin-shadow-sf.png"
 
          @user_distance_text = ko.computed () =>
